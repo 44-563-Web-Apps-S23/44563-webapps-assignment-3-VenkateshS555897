@@ -7,5 +7,136 @@
         <h1>Venkateshwar Reddy Patlolla</h1>
         <h2>My Favourite sport team is Indian cricket Team</h2>
         <p>Cricket is my favorite game,for one match two teams can participitate and <strong>each team has 11 players</strong> which includes bowlers and bats person. <strong>This sport has highest viewership in India.</strong> My favorite player is dhoni.</p>
+        <hr>
+        <h2>Favourite Team and Palyers</h2>
+        <p>My favourite cricket team is Indian Cricket Team. My three favourite cricket players are</p>
+        <ol>
+            <li>Dhoni</li>
+            <li>Sachin</li>
+            <li>Kohli</li>
+        </ol>
+        <p>Other Teams I would like to watch play are</p>
+        <ul>
+            <li>Australia</li>
+            <li>Bangladesh</li>
+            <li>England</li>
+        </ul>
+        <a href="aboutme.html">Click here to know more about me</a>
+
+        <hr>
+        <h2>Favourite countries to visit</h2>
+        <p>I have travelled to 5 coutries in that, I would like to recommend four countries to visit during the summer break. In below each country a special event is happing in summer.</p>
+        <style>
+            table, th, td {
+              border:1px solid black;
+            }
+            </style>
+        <table>
+            <tr>
+                <th>Country Name</th>
+                <th>Reason for recommendation</th>
+                <th>Days Spent</th>
+            </tr>
+            <tr>
+                <td>India</td>
+                <td>To watch World cup final match</td>
+                <td>13</td>
+            </tr>
+            <tr>
+                <td>Qatar</td>
+                <td>To watch live FIFA World Cup</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Indonasia</td>
+                <td>To visit bali beach</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>China</td>
+                <td>To explore more about farming</td>
+                <td>9</td>
+            </tr>
+        </table>
     </body>
 </html>
+<hr>
+<h3>Code Display</h3>
+<h3>Lazy Loading images</h3>
+<a href="https://css-tricks.com/snippets/javascript/lazy-loading-images/"</a>
+
+<pre>   
+    !function(window){
+        var $q = function(q, res){
+              if (document.querySelectorAll) {
+                res = document.querySelectorAll(q);
+              } else {
+                var d=document
+                  , a=d.styleSheets[0] || d.createStyleSheet();
+                a.addRule(q,'f:b');
+                for(var l=d.all,b=0,c=[],f=l.length;b<f;b++)
+                  l[b].currentStyle.f && c.push(l[b]);
+      
+                a.removeRule(0);
+                res = c;
+              }
+              return res;
+            }
+          , addEventListener = function(evt, fn){
+              window.addEventListener
+                ? this.addEventListener(evt, fn, false)
+                : (window.attachEvent)
+                  ? this.attachEvent('on' + evt, fn)
+                  : this['on' + evt] = fn;
+            }
+          , _has = function(obj, key) {
+              return Object.prototype.hasOwnProperty.call(obj, key);
+            }
+          ;
+      
+        function loadImage (el, fn) {
+          var img = new Image()
+            , src = el.getAttribute('data-src');
+          img.onload = function() {
+            if (!! el.parent)
+              el.parent.replaceChild(img, el)
+            else
+              el.src = src;
+      
+            fn? fn() : null;
+          }
+          img.src = src;
+        }
+      
+        function elementInViewport(el) {
+          var rect = el.getBoundingClientRect()
+      
+          return (
+             rect.top    >= 0
+          && rect.left   >= 0
+          && rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+          )
+        }
+      
+          var images = new Array()
+            , query = $q('img.lazy')
+            , processScroll = function(){
+                for (var i = 0; i < images.length; i++) {
+                  if (elementInViewport(images[i])) {
+                    loadImage(images[i], function () {
+                      images.splice(i, i);
+                    });
+                  }
+                };
+              }
+            ;
+          // Array.prototype.slice.call is not callable under our lovely IE8 
+          for (var i = 0; i < query.length; i++) {
+            images.push(query[i]);
+          };
+      
+          processScroll();
+          addEventListener('scroll',processScroll);
+      
+      }(this);    
+</pre>
